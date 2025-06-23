@@ -4,7 +4,7 @@ import re
 
 #load dataset
 print("Loading dataset...")
-dataset = load_dataset("csv", data_files="/home/umflint.edu/brayclou/Github repo/datasets/Test_Suicide_Detection.csv")
+dataset = load_dataset("csv", data_files="./datasets/Test_Suicide_Detection.csv")
 dataset = dataset.map(lambda row: {"class": 0 if row["class"] == "non-suicide" else 1})
 
 #load model and tokenizer
@@ -38,4 +38,4 @@ pred_dataset = dataset.map(get_prediction, batched=False, desc="Generating predi
 
 #Save to csv
 print("Saving predictions to CSV...")
-pred_dataset.to_pandas().to_csv("/home/umflint.edu/brayclou/Github repo/results/llama-finetuned/predicted_scores.csv", index=False)
+pred_dataset.to_pandas().to_csv("./results/llama-finetuned/predicted_scores.csv", index=False)

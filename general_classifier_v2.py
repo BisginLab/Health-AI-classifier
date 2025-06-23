@@ -34,7 +34,7 @@ login(token)
 print("Huggingface credentials passed...")
 
 # load dataset
-df = pd.read_csv('/home/umflint.edu/brayclou/Github repo/datasets/Test_Suicide_Detection.csv', header=0)
+df = pd.read_csv('./datasets/Test_Suicide_Detection.csv', header=0)
 # change labels to binary
 df['class'] = [0 if x == "non-suicide" else 1 for x in df['class']]
 
@@ -93,7 +93,7 @@ try:
     # the next 6 lines are used to save the output every 1000 batches, then release the memory to avoid CUDA memory crash
     temp_results = []
     flush_interval = 1000  # Flush every 1000 batches
-    output_file = "Github repo/results/llama-base/llama_pred_labels.csv"
+    output_file = "./llama_pred_labels.csv"
 
     if os.path.exists(output_file):
         os.remove(output_file)  # Ensure clean start
